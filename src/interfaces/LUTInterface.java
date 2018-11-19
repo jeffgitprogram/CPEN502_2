@@ -24,7 +24,7 @@ public interface LUTInterface extends CommonInterface{
 	/**
 	 * Initialise the look up table to all zeros.
 	 */
-	public void initialiseLUT();
+	public void initializeLUT();
 
 	/**
 	 * A helper method that translates a vector being used to index the look up table
@@ -32,6 +32,6 @@ public interface LUTInterface extends CommonInterface{
 	 * @param X The state action vector used to index the LUT
 	 * @return The index where this vector maps to
 	 */
-	public int indexFor(double [] X); 
+	//public int indexFor(double [] X); 
 
 }// End of public interface LUT
