@@ -1,10 +1,12 @@
 package learning;
 
+
 import interfaces.LUTInterface;
 
 import java.io.*;
 
 import robocode.RobocodeFileOutputStream;
+
 public class LUT implements LUTInterface{
 	private int bestAction = 0;
 	private double [][] table;
@@ -34,12 +36,12 @@ public class LUT implements LUTInterface{
 		for(int actionN = 0; actionN < this.table[state].length; actionN++) {
 			if (table[state][actionN] > maxQVal)
 				maxQVal = this.table[state][actionN];
-			bestAction = actionN;
+				bestAction = actionN;
 		}
 		return maxQVal;
 	}
 	
-	public int getBestAction(int state) {
+	public int getMaxQAction(int state) {
 		getMaxQvalue(state);
 		return bestAction;
 	}
