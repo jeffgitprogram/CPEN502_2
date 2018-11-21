@@ -1,6 +1,6 @@
 package learning;
 
-public class actions{
+public class Actions{
 	public static final int RobotAhead = 0;  
 	public static final int RobotBack = 1;  
 	public static final int RobotAheadTurnLeft = 2;  

@@ -1,6 +1,6 @@
 package learning;
 
-public class target {
+public class Target {
 	  private String name;   
 	  private double bearing;   
 	  private double head;   
@@ -11,7 +11,7 @@ public class target {
 	  private double changehead;   
 	  private double energy;
 	  
-	  public target() {
+	  public Target() {
 		  this.name = null;
 		  this.bearing = 0.0d;
 		  this.head = 0.0d;
@@ -23,7 +23,7 @@ public class target {
 		  this.changehead = 0.0d;
 		  this.energy = 0.0d;
 	  }
-	  public target(String name, double bearing, double head, 
+	  public Target(String name, double bearing, double head, 
 			  		long ctime, double speed, double x, double y,
 			  		double distance, double changehead, double energy) {
 		  this.name = name;

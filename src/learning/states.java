@@ -1,6 +1,6 @@
 package learning;
 
-public class states {
+public class States {
 	public static final int NumHeading = 4;  //Four states, up, right, down, left
 	public static final int NumTargetDistance = 10;  //Ten levels of distance
 	public static final int NumTargetBearing = 4;  
@@ -49,7 +49,7 @@ public class states {
 	} 
 	
 	
-	public int getStateIndex(int heading, int distance, int bearing, int hitwall, int hitbybullet) {
+	public static int getStateIndex(int heading, int distance, int bearing, int hitwall, int hitbybullet) {
 		return Mapping[heading][distance][bearing][hitwall][hitbybullet];
 	}
 }

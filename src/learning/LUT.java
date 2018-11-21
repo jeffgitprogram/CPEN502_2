@@ -11,13 +11,13 @@ public class LUT implements LUTInterface{
 	private int bestAction = 0;
 	private double [][] table;
 	public LUT() {
-		table = new double [states.NumStates][actions.NumRobotActions];
+		table = new double [States.NumStates][Actions.NumRobotActions];
 		initializeLUT();
 	}
 	
 	public void initializeLUT() {
-		for (int stateN = 0; stateN < states.NumStates; stateN++)   
-		      for (int actionN = 0; actionN < actions.NumRobotActions; actionN++)   
+		for (int stateN = 0; stateN < States.NumStates; stateN++)   
+		      for (int actionN = 0; actionN < Actions.NumRobotActions; actionN++)   
 		          	  table[stateN][actionN] = 0.0;  
 	}
 	
@@ -31,12 +31,13 @@ public class LUT implements LUTInterface{
 		this.table[state][action] = value;
 	}
 	
-	public double getMaxQvalue(int state) {
+	public double getMaxQvalue(int currentstate) {
 		double maxQVal = Double.NEGATIVE_INFINITY;
-		for(int actionN = 0; actionN < this.table[state].length; actionN++) {
-			if (table[state][actionN] > maxQVal)
-				maxQVal = this.table[state][actionN];
+		for(int actionN = 0; actionN < this.table[currentstate].length; actionN++) {
+			if (table[currentstate][actionN] > maxQVal) {
+				maxQVal = this.table[currentstate][actionN];
 				bestAction = actionN;
+			}
 		}
 		return maxQVal;
 	}
@@ -50,8 +51,8 @@ public class LUT implements LUTInterface{
 		BufferedReader read = null;   
 	    try   {   
 	    	read = new BufferedReader(new FileReader(file));   
-	    	for (int i = 0; i < states.NumStates; i++)   
-	    		for (int j = 0; j < actions.NumRobotActions; j++)   
+	    	for (int i = 0; i < States.NumStates; i++)   
+	    		for (int j = 0; j < Actions.NumRobotActions; j++)   
 	    			table[i][j] = Double.parseDouble(read.readLine());   
 	    }   
 	    catch (IOException e)   {   
@@ -76,8 +77,8 @@ public class LUT implements LUTInterface{
 		PrintStream saveFile = null;   
 	    try   {   
 	    	saveFile = new PrintStream(new RobocodeFileOutputStream(file));   
-  			for (int i = 0; i < states.NumStates; i++)   
-  				for (int j = 0; j < actions.NumRobotActions; j++)   
+  			for (int i = 0; i < States.NumStates; i++)   
+  				for (int j = 0; j < Actions.NumRobotActions; j++)   
   					saveFile.println(new Double(table[i][j]));  
   			
   			if (saveFile.checkError())   
@@ -104,8 +105,8 @@ public class LUT implements LUTInterface{
 		System.out.println("good up till here");
 		PrintWriter printWriter = new PrintWriter(new FileWriter(fileName));		
 		printWriter.printf("State, Action, QValue \n");
-		for (int i = 0; i < states.NumStates; i++)   {
-	        for (int j = 0; j < actions.NumRobotActions; j++) {
+		for (int i = 0; i < States.NumStates; i++)   {
+	        for (int j = 0; j < Actions.NumRobotActions; j++) {
 	        	printWriter.printf("%d, %d, %f, \n", i, j, this.table[i][j]);
 	        }
 		}
